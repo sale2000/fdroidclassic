@@ -103,3 +103,4 @@ released under an
 Translations are here: https://weblate.bubu1.eu/projects/f-droid-classic/
 
 [![Translation status](https://weblate.bubu1.eu/widgets/f-droid-classic/-/svg-badge.svg)](https://weblate.bubu1.eu/engage/f-droid-classic/?utm_source=widget)
+# fdroidclassic
