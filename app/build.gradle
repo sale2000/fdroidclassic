@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven { url "https://jitpack.io" }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.preference:preference:1.1.1'
+
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'info.guardianproject.netcipher:netcipher:2.1.0'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'com.github.ligi.tracedroid:lib:3.0'
+    implementation 'com.github.ligi.tracedroid:supportemail:3.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+}
+
+def myApplicationId = "eu.bubu1.fdroidclassic"
+def privilegedExtensionApplicationId = '"eu.bubu1.privext"'
+def privilegedExtensionApplicationIdFallback1 = '"org.fdroid.fdroid.privileged.do"'
+def privilegedExtensionApplicationIdFallback2 = '"org.fdroid.fdroid.privileged.root"'
+
+
+android {
+    compileSdkVersion 28
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+        all {
+            buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
+            buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME_FALLBACK1", privilegedExtensionApplicationIdFallback1
+            buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME_FALLBACK2", privilegedExtensionApplicationIdFallback2
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "applicationId", myApplicationId + applicationIdSuffix
+            versionNameSuffix "-debug"
+            println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
+        }
+    }
+
+    compileOptions {
+        encoding = "UTF-8"
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 25
+        versionCode 1014
+        applicationId myApplicationId
+        resValue "string", "applicationId", myApplicationId
+        versionName getVersionName()
+    }
+
+    testOptions {
+        unitTests {
+            // prevent tests from dying on android.util.Log calls
+            returnDefaultValues = true
+            all {
+                // All the usual Gradle options.
+                testLogging {
+                    events "skipped", "failed", "standardOut", "standardError"
+                    showStandardStreams = true
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError true
+
+        htmlReport true
+        xmlReport false
+        textReport false
+
+        // Our translations are crowd-sourced
+        disable 'MissingTranslation'
+
+        error 'AppCompatMethod', 'NestedScrolling', 'StringFormatCount', 'UnsafeProtectedBroadcastReceiver'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/INDEX.LIST'
+        exclude '.readme'
+    }
+}
