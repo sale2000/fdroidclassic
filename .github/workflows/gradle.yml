@@ -4,17 +4,6 @@ on: [push, pull_request]
 
 jobs:
 
-    pmd:
-        name: PMD
-        runs-on: ubuntu-latest
-
-        steps:
-            -   uses: actions/checkout@v2
-
-            -   name: Run PMD
-                run: ./gradlew pmd
-
-
     buildDebug:
         name: Debug build
         runs-on: ubuntu-latest
