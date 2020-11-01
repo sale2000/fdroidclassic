@@ -1,5 +1,15 @@
 ## F-Droid Classic
 
+
+`
+10124  ~/.gradle/wrapper/dists/gradle-6.1.1-all/cfmwm155h49vnt3hynmlrsdst/gradle-6.1.1/bin/gradle wrapper
+
+10125  lt
+
+10126  ./gradlew assembleDebug
+`
+
+
 Join the matrix room: [#fdroidclassic:bubu1.eu](https://matrix.to/#/#fdroidclassic:bubu1.eu)
 
 ### Download
