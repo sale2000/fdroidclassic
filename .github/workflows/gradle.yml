@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+
+    pmd:
+        name: PMD
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   name: Run PMD
+                run: ./gradlew pmd
+
+
+    buildDebug:
+        name: Debug build
+        runs-on: ubuntu-latest
+
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   name: Run debug build
+                run: ./gradlew assembleDebug
+
+            -   name: Upload artifact to GitHub
+                uses: actions/upload-artifact@v2
+                with:
+                    name: Fdroid-Classic-debug.apk
+                    path: outputs/apk/debug/app-debug.apk
