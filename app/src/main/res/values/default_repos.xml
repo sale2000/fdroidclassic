@@ -25,13 +25,11 @@
         </item>
 
         <!-- name -->
-        <item>F-Droid</item>
+        <item>fau</item>
         <!-- address -->
-        <item>https://f-droid.org/repo</item>
+        <item>https://ftp.fau.de/fdroid/repo</item>
         <!-- description -->
-        <item>The official F-Droid repository. Applications in this repository are mostly built
-            directory from the source code. Some are official binaries built by the original
-            application developers - these will be replaced by source-built versions over time.
+        <item>fau mirror.
         </item>
         <!-- version -->
         <item>13</item>
