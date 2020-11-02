@@ -1,20 +1,22 @@
 ## F-Droid Classic
 
+### To generate `gradlew`
 
-`
-10124  ~/.gradle/wrapper/dists/gradle-6.1.1-all/cfmwm155h49vnt3hynmlrsdst/gradle-6.1.1/bin/gradle wrapper
+Look for some gradle installed in your home directory
 
-10125  lt
+```
+~/.gradle/wrapper/dists/gradle-6.1.1-all/4GWC59KJTHRhHoozxLiM/gradle-6.1.1/bin/gradle wrapper
 
-10126  ./gradlew assembleDebug
-`
+./gradlew assembleDebug
+
+```
 
 
 Join the matrix room: [#fdroidclassic:bubu1.eu](https://matrix.to/#/#fdroidclassic:bubu1.eu)
 
 ### Download
 
-Download the (beta) apk here: https://bubu1.eu/fdroidclassic/fdroid/repo/eu.bubu1.fdroidclassic_1013.apk
+Download the (beta) apk here: https://github.com/sale2000/fdroidclassic/actions
 
 This comes with it's own F-Droid repository for updates pre-configured.
 
